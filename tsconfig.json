@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "allowJs": true,
+    "checkJs": true,
+    "declaration": true,
+    "preserveSymlinks": true,
+    "sourceMap": true,
+    "rootDir": "src",
+    "outDir": "dist",
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "NodeNext",
+    "importsNotUsedAsValues": "remove",
+    "strict": true,
+    "experimentalDecorators": true,
+    "downlevelIteration": true,
+    "skipLibCheck": true,
+    "lib": ["es2015"],
+    "resolveJsonModule": true,
+    "baseUrl": ".",
+    "paths": {
+      "@whispernode/*": ["src/*"]
+    },
+    "plugins": [
+      {
+        "transform": "typescript-transform-paths"
+      },
+      {
+        "transform": "typescript-transform-paths",
+        "afterDeclarations": true
+      }
+    ]
+  },
+  "include": ["./src"],
+  "exclude": ["node_modules", ",./lib"]
+}

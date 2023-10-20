@@ -1,0 +1,6 @@
+node_modules
+*.yaml
+dist
+build
+.husky
+lib/whisper.cpp
