@@ -3,12 +3,13 @@ import { whisper } from './index';
 import { type TranscriptLine } from './models';
 
 describe('testing whisper library node', () => {
-  it('when send audio file', () => {});
-  const [result] = whisper('./samples/jfk.wav', {
-    modelName: 'small',
-  }) as unknown as TranscriptLine[];
+  it('when send audio file', async () => {
+    const [result] = (await whisper('./samples/jfk.wav', {
+      modelName: 'small',
+    })) as unknown as TranscriptLine[];
 
-  expect(result.start).toBeInstanceOf(String);
-  expect(result.end).toBeInstanceOf(String);
-  expect(result.speech).toBeInstanceOf(String);
+    expect(typeof result.start).toBe('string');
+    expect(typeof result.end).toBe('string');
+    expect(typeof result.speech).toBe('string');
+  }, 10000);
 });

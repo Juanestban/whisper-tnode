@@ -19,5 +19,6 @@ export const whisper = async (filePath: string, options: Options<ShellOptions>) 
     return tanscriptToArray(transcript);
   } catch (error) {
     println(pc.bgRed(pc.white('WHISPERNODE_ERROR')), pc.red(`Problem: ${error as any}`));
+    return [];
   }
 };
