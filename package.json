@@ -1,11 +1,12 @@
 {
   "name": "whispernode",
-  "version": "1.0.0",
+  "version": "0.0.4",
   "description": "library for use with whisper.cpp and nodejs or typescript project",
   "main": "index.js",
   "scripts": {
     "prepare": "ts-patch install -s",
     "dev": "NODE_ENV=development node --watch -r @swc-node/register src/index.ts",
+    "cli": "NODE_ENV=development node -r @swc-node/register src/cli.ts",
     "start": "NODE_ENV=production node dist/index.js",
     "build": "rm -rf dist && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,14 +22,15 @@
   },
   "dependencies": {
     "cac": "6.7.14",
-    "execa": "8.0.1",
     "minimist": "1.2.8",
-    "picocolors": "1.0.0"
+    "picocolors": "1.0.0",
+    "shelljs": "0.8.5"
   },
   "devDependencies": {
     "@swc-node/register": "1.6.8",
     "@types/minimist": "1.2.4",
     "@types/node": "20.8.7",
+    "@types/shelljs": "0.8.14",
     "@typescript-eslint/eslint-plugin": "6.4.0",
     "eslint": "8.51.0",
     "eslint-config-prettier": "9.0.0",

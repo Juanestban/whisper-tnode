@@ -1,3 +1,6 @@
+const ON = 1;
+const OFF = 0;
+
 module.exports = {
   env: {
     browser: true,
@@ -9,5 +12,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  rules: {},
+  rules: {
+    '@typescript-eslint/strict-boolean-expressions': OFF,
+  },
 };
