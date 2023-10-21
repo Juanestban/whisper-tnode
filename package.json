@@ -1,6 +1,6 @@
 {
   "name": "whisper-tnode",
-  "version": "0.6.0",
+  "version": "0.6.2",
   "description": "library for use with whisper.cpp and nodejs or typescript project",
   "main": "dist/index.js",
   "bin": {

@@ -1,1 +1,1 @@
-export const WHISPERNODE_VERSION = '0.6.0';
+export const WHISPERNODE_VERSION = '0.6.2';
