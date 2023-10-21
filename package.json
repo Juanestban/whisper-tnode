@@ -1,6 +1,6 @@
 {
   "name": "whispernode",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "library for use with whisper.cpp and nodejs or typescript project",
   "main": "dist/index.js",
   "bin": {
