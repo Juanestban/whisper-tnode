@@ -3,3 +3,5 @@ dist
 node_modules
 lib/whisper.cpp
 bin
+jest.*.js
+jest-*.js

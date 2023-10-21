@@ -14,6 +14,19 @@ export const MODELS_LIST: Model[] = [
   'all',
 ];
 
+export const MODELS_LIST_FILENAMES: Record<Exclude<Model, 'all'>, string> = {
+  tiny: 'ggml-tiny.bin',
+  'tiny.en': 'ggml-tiny.en.bin',
+  base: 'ggml-base.bin',
+  'base.en': 'ggml-base.en.bin',
+  small: 'ggml-small.bin',
+  'small.en': 'ggml-small.en.bin',
+  medium: 'ggml-medium.bin',
+  'medium.en': 'ggml-medium.en.bin',
+  'large-v1': 'ggml-large-v1.bin',
+  large: 'ggml-large.bin',
+};
+
 export const DEFAULT_MODEL: Model = 'base';
 
 export const WHISPER_MODELS_PATH = 'lib/whisper.cpp/models';
