@@ -14,5 +14,6 @@ module.exports = {
   },
   rules: {
     '@typescript-eslint/strict-boolean-expressions': OFF,
+    '@typescript-eslint/return-await': OFF,
   },
 };

@@ -6,7 +6,6 @@
     "checkJs": true,
     "declaration": true,
     "preserveSymlinks": true,
-    "sourceMap": true,
     "rootDir": "src",
     "outDir": "dist",
     "isolatedModules": true,
