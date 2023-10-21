@@ -15,5 +15,6 @@ module.exports = {
   rules: {
     '@typescript-eslint/strict-boolean-expressions': OFF,
     '@typescript-eslint/return-await': OFF,
+    '@typescript-eslint/explicit-function-return-type': OFF,
   },
 };
