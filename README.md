@@ -1,18 +1,18 @@
-# whispernode
+# whisper-tnode
 
 ## getting started
 
 Install
 ```sh
-npm install -D whispernode
+npm install -D whisper-tnode
 ```
 
 ```sh
-yarn add -D whispernode
+yarn add -D whisper-tnode
 ```
 
 ```sh
-pnpm add -D whispernode
+pnpm add -D whisper-tnode
 ```
 
 ## How to download model
@@ -20,7 +20,7 @@ pnpm add -D whispernode
 By default without model flag, this will take `base` model whisper
 
 ```sh
-pnpm whispernode download
+pnpm whisper-tnode download
 ```
 
 ### flags

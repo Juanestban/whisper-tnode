@@ -1,10 +1,10 @@
 {
-  "name": "@juanestbandev/whispernode",
+  "name": "whisper-tnode",
   "version": "0.6.0",
   "description": "library for use with whisper.cpp and nodejs or typescript project",
   "main": "dist/index.js",
   "bin": {
-    "whispernode": "bin/cli.js"
+    "whisper-tnode": "bin/cli.js"
   },
   "scripts": {
     "prepare": "ts-patch install -s",
@@ -20,7 +20,7 @@
     "cac",
     "picocolors",
     "whisper",
-    "whispernode",
+    "whisper-tnode",
     "typescript",
     "shelljs",
     "eslint",
@@ -31,9 +31,9 @@
     "url": "https://github.com/Juanestban"
   },
   "repository": {
-    "url": "https://github.com/Juanestban/whispernode"
+    "url": "https://github.com/Juanestban/whisper-tnode"
   },
-  "bugs": "https://github.com/Juanestban/whispernode/issues",
+  "bugs": "https://github.com/Juanestban/whisper-tnode/issues",
   "license": "ISC",
   "engines": {
     "node": ">=18.11.0"
