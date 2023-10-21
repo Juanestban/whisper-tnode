@@ -1,5 +1,5 @@
 {
-  "name": "whispernode",
+  "name": "@junedev/whispernode",
   "version": "0.6.0",
   "description": "library for use with whisper.cpp and nodejs or typescript project",
   "main": "dist/index.js",
