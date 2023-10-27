@@ -9,6 +9,7 @@ import {
   LINK_REPO_WHISPER_CPP,
   WHISPERNODE_VERSION,
   WHISPER_MODELS_PATH,
+  LIBRARY_PATH,
   MODELS_LIST,
 } from '@whispernode/config/constants';
 import { type Model } from '@whispernode/models';
@@ -18,6 +19,7 @@ const cli = cac();
 
 cli
   .command('download', "command for download model, by default will download 'base' model")
+  .option('-a, --allmute', 'mute logs to download')
   .option(
     '-m, --model <model-name>',
     `
@@ -35,8 +37,8 @@ cli
 | large     | 2.9 GB | ~4.7 GB |
 `,
   )
-  .action(async (flags: { m: Model; model: Model }) => {
-    const { model = 'base' } = flags;
+  .action(async (flags: { m: Model; model: Model; allmute: boolean }) => {
+    const { model = 'base', allmute = false } = flags;
     const modelName = model.toLowerCase() as Model;
     const scriptName = './download-ggml-model';
     let scriptPath = `${scriptName}.sh`;
@@ -47,15 +49,17 @@ cli
       println('run help   =>', pc.blue('pnpm whispernode download --help'));
       process.exit(1);
     }
+    const whisperCppPath = path.join(process.cwd(), WHISPER_MODELS_PATH);
 
-    if (!fs.existsSync(path.resolve(process.cwd(), WHISPER_MODELS_PATH))) {
-      shelljs.cd('lib');
+    if (!fs.existsSync(whisperCppPath)) {
+      shelljs.cd(path.join(process.cwd(), LIBRARY_PATH));
       shelljs.exec(`git clone ${LINK_REPO_WHISPER_CPP}`);
       shelljs.cd('../');
     }
 
+    console.log(allmute);
     println('[+]', pc.blue(`model: [${model ?? 'base'}]`));
-    shelljs.cd(WHISPER_MODELS_PATH);
+    shelljs.cd(whisperCppPath);
 
     if (!shelljs.which(scriptPath)) {
       println(pc.bgRed(pc.white('whispernode downloader is not run on the correct root path')));
@@ -70,15 +74,16 @@ cli
     modelName === 'all' && println(pc.bgYellow(pc.black('[>] downloading >=18GB')));
 
     try {
-      listModels.forEach((mod) => {
-        if (mod === modelName || modelName === 'all') {
-          shelljs.exec(`${scriptPath} ${mod}`);
-        }
-      });
       println(pc.bgYellow(pc.black('COMPILE_MODEL')), pc.yellow('Attempting to compile model...'));
 
+      listModels.forEach((mod) => {
+        if (mod === modelName || modelName === 'all') {
+          shelljs.exec(`${scriptPath} ${mod}`, { silent: allmute });
+        }
+      });
+
       shelljs.cd('../');
-      shelljs.exec('make');
+      shelljs.exec('make', { silent: allmute });
 
       println(pc.green('Download and compile model done correctly!'));
 

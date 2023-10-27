@@ -25,6 +25,8 @@ pnpm whisper-tnode download
 
 ### flags
 
+- `--almute` or `-a` for silent all log when be downloading and compiling the whisper model cpp
+
 - `--model` or `-m`
 
 **log:**
