@@ -5,3 +5,4 @@ lib/whisper.cpp
 bin
 jest.*.js
 jest-*.js
+scripts
