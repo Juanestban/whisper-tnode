@@ -21,4 +21,4 @@ const newVersionFilePackage = filePackage.replace(
 
 fs.writeFileSync(VERSION_FILE_PACKAGE, newVersionFilePackage);
 
-console.log('[🟢] Done change');
+console.log('[🟢] Done change version');
