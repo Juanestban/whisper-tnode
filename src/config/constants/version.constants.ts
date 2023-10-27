@@ -1,2 +1,2 @@
 export const WHISPERNODE_NAME = 'whisper-tnode';
-export const WHISPERNODE_VERSION = '0.9.1';
+export const WHISPERNODE_VERSION = '1.0.0';

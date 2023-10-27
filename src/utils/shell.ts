@@ -3,9 +3,10 @@ import pc from 'picocolors';
 import shell from 'shelljs';
 
 import { type ShellOptions } from '@whispernode/models';
+import { WHISPER_CPP } from '@whispernode/config/constants';
 import { println } from '@whispernode/utils/print';
 
-const WHISPER_CPP_PATH = path.resolve(process.cwd(), 'lib/whisper.cpp');
+const WHISPER_CPP_PATH = path.join(process.cwd(), WHISPER_CPP);
 const WHISPER_CPP_MAIN_PATH = './main';
 
 const defaultShellOptions: ShellOptions = {
@@ -32,14 +33,15 @@ try {
   if (!shell.which(WHISPER_CPP_MAIN_PATH)) {
     println(
       pc.bgYellow(
-        pc.black(`Problem, not found '${WHISPER_CPP_MAIN_PATH}' file from directory whisper.cpp`),
+        pc.black(
+          `Problem, not found '${WHISPER_CPP_MAIN_PATH}' file from directory whisper.cpp, maybe you don't have repo`,
+        ),
       ),
     );
-    println(pc.bgYellow(pc.black(`Attempting to run 'make' command in /whisper directory...`)));
-
-    shell.exec('make', defaultShellOptions);
     println(
-      pc.green(`Problem, not found '${WHISPER_CPP_MAIN_PATH}' file from directory whisper.cpp`),
+      pc.bgYellow(
+        pc.black(`[+] Try use cli for download correctly whisper.cpp repo and download the model`),
+      ),
     );
   }
 } catch (error) {

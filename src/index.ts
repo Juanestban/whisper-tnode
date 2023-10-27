@@ -1,13 +1,13 @@
 import path from 'node:path';
 import pc from 'picocolors';
 
-import { type Options, type ShellOptions } from '@whispernode/models';
+import { type Whisper } from '@whispernode/models';
 import shell from '@whispernode/utils/shell';
 import { createCppCommand } from '@whispernode/utils/whisper';
 import tanscriptToArray from '@whispernode/utils/tsToArray';
 import { println } from './utils/print';
 
-export const whisper = async (filePath: string, options: Options<ShellOptions>) => {
+export const whisper = async ({ filePath, options }: Whisper) => {
   try {
     const { modelName, whisperOptions, shellOptions } = options;
     const cmd = await createCppCommand({

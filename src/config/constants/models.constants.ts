@@ -30,6 +30,7 @@ export const MODELS_LIST_FILENAMES: Record<Exclude<Model, 'all'>, string> = {
 };
 
 export const DEFAULT_MODEL: Model = 'base';
-const ROOT_PROJECT = `${env.isDevelopment ? '' : 'node_modules/' + WHISPERNODE_NAME}`;
+export const ROOT_PROJECT = `${env.isDevelopment ? '' : 'node_modules/' + WHISPERNODE_NAME}`;
 export const LIBRARY_PATH = `${ROOT_PROJECT}/lib`;
-export const WHISPER_MODELS_PATH = `${LIBRARY_PATH}/whisper.cpp/models`;
+export const WHISPER_CPP = `${LIBRARY_PATH}/whisper.cpp`;
+export const WHISPER_MODELS_PATH = `${WHISPER_CPP}/models`;

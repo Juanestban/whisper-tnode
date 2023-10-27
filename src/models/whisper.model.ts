@@ -1,3 +1,9 @@
+import { type ShellOptions } from './shell.model';
+export interface Whisper {
+  filePath: string;
+  options: Options<ShellOptions>;
+}
+
 export type Model =
   | 'tiny'
   | 'tiny.en'

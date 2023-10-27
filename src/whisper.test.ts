@@ -1,12 +1,11 @@
 import { whisper } from './index';
 
-import { type TranscriptLine } from './models';
-
 describe('testing whisper library node', () => {
   it('when send audio file', async () => {
-    const [result] = (await whisper('./samples/jfk.wav', {
-      modelName: 'small',
-    })) as unknown as TranscriptLine[];
+    const [result] = await whisper({
+      filePath: './samples/jfk.wav',
+      options: { modelName: 'small' },
+    });
 
     expect(typeof result.start).toBe('string');
     expect(typeof result.end).toBe('string');
