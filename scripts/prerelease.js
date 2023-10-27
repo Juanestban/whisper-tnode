@@ -19,7 +19,6 @@ const newVersionFilePackage = filePackage.replace(
   `"version": "${newVersion}"`,
 );
 
-console.log(newVersionFileTs);
-console.log(newVersionFilePackage);
-
 fs.writeFileSync(VERSION_FILE_PACKAGE, newVersionFilePackage);
+
+console.log('[🟢] Done change');

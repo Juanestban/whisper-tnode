@@ -1,17 +1,17 @@
 {
   "name": "whisper-tnode",
-  "version": "0.8.0",
+  "version": "0.8.3",
   "description": "library for use with whisper.cpp and nodejs or typescript project",
   "main": "dist/index.js",
   "bin": {
-    "whisper-tnode": "bin/cli.js"
+    "whisper-tnode": "dist/cli.js"
   },
   "scripts": {
     "prepare": "ts-patch install -s",
     "dev": "cross-env NODE_ENV=development node --watch -r @swc-node/register src/index.ts",
     "cli": "cross-env NODE_ENV=development node -r @swc-node/register src/cli.ts",
     "start": "cross-env NODE_ENV=production node dist/index.js",
-    "build": "rm -rf dist && tsc && cp ./dist/cli.js ./bin",
+    "build": "rm -rf dist && tsc",
     "prerelease": "node ./scripts/prerelease.js",
     "test": "jest --config jest.config.js"
   },
