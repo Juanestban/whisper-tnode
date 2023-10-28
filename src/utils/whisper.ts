@@ -33,20 +33,28 @@ const modelPathOrName = async (model?: OnlyModel): Promise<string> => {
 
     println(
       pc.bgYellow(pc.black('WARNING')),
-      pc.yellow('missing library whisper.cpp, run next command'),
+      pc.yellow(`missing model [${model}] from whisper.cpp`),
     );
 
     if (process.platform === 'win32') {
       scriptPath = `${scriptName}.cmd`;
     }
+    const WHISPER_MODEL_FOLDER = path.join(process.cwd(), WHISPER_MODELS_PATH);
 
     await new Promise((resolve, reject) => {
       shelljs.exec(
-        `${path.join(process.cwd(), WHISPER_MODELS_PATH, scriptPath)} ${model}`,
+        `${WHISPER_MODEL_FOLDER}/${scriptPath} ${model}`,
         { async: true, silent: true },
         (code, stdout, stderr) => {
-          if (code === 0) resolve(stdout);
-          else reject(stderr);
+          if (code === 0) {
+            shelljs.cd(path.join(process.cwd(), WHISPER_CPP));
+            shelljs.exec('make', { silent: true, async: true }, (code, _, stderr) => {
+              if (code === 0) {
+                shelljs.cd('../');
+                resolve(stdout);
+              } else reject(stderr);
+            });
+          } else reject(stderr);
         },
       );
     });

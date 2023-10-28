@@ -1,11 +1,11 @@
 import path from 'node:path';
-import { whisper } from './index';
+import { whisper } from '../src/index';
 
 describe('testing whisper library node', () => {
   it('when send audio file', async () => {
     const transcript = await whisper({
       filePath: path.join(process.cwd(), 'src/samples/jfk.wav'),
-      options: { modelName: 'small' },
+      options: { modelName: 'tiny' },
     });
 
     expect(transcript.length).toBe(1);

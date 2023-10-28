@@ -6,3 +6,4 @@ bin
 jest.*.js
 jest-*.js
 scripts
+test

@@ -1,6 +1,6 @@
 {
   "name": "whisper-tnode",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "library for use with whisper.cpp and nodejs or typescript project",
   "main": "dist/index.js",
   "bin": {
@@ -13,6 +13,7 @@
     "start": "cross-env NODE_ENV=production node dist/index.js",
     "build": "rm -rf dist && tsc",
     "changeversion": "node ./scripts/changeversion.js",
+    "prepublish": "pnpm build",
     "test": "cross-env NODE_ENV=development jest --config jest.config.js"
   },
   "private": false,
