@@ -57,7 +57,6 @@ cli
       shelljs.cd('../');
     }
 
-    console.log(allmute);
     println('[+]', pc.blue(`model: [${model ?? 'base'}]`));
     shelljs.cd(whisperCppPath);
 
@@ -78,7 +77,8 @@ cli
 
       listModels.forEach((mod) => {
         if (mod === modelName || modelName === 'all') {
-          shelljs.exec(`${scriptPath} ${mod}`, { silent: allmute });
+          const cmd = path.resolve(process.cwd(), scriptPath);
+          shelljs.exec(`${cmd} ${mod}`, { silent: allmute });
         }
       });
 
