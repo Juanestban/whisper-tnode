@@ -28,7 +28,7 @@ const modelPathOrName = async (model?: OnlyModel): Promise<string> => {
   const finalPath = path.join(process.cwd(), WHISPER_CPP, modelPath);
 
   if (!fs.existsSync(finalPath)) {
-    const scriptName = './download-ggml-model';
+    const scriptName = 'download-ggml-model';
     let scriptPath = `${scriptName}.sh`;
 
     println(
@@ -36,15 +36,13 @@ const modelPathOrName = async (model?: OnlyModel): Promise<string> => {
       pc.yellow('missing library whisper.cpp, run next command'),
     );
 
-    shelljs.cd(path.join(WHISPER_MODELS_PATH));
-
     if (process.platform === 'win32') {
       scriptPath = `${scriptName}.cmd`;
     }
 
     await new Promise((resolve, reject) => {
       shelljs.exec(
-        `${scriptPath} ${model}`,
+        `${path.join(process.cwd(), WHISPER_MODELS_PATH, scriptPath)} ${model}`,
         { async: true, silent: true },
         (code, stdout, stderr) => {
           if (code === 0) resolve(stdout);

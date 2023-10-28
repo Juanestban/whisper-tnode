@@ -15,5 +15,5 @@ describe('testing whisper library node', () => {
     expect(typeof result.start).toBe('string');
     expect(typeof result.end).toBe('string');
     expect(typeof result.speech).toBe('string');
-  }, 10000);
+  }, 60000);
 });
