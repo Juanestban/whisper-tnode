@@ -1,4 +1,3 @@
-import path from 'node:path';
 import pc from 'picocolors';
 
 import { type Whisper } from '@whispernode/models';
@@ -11,7 +10,7 @@ export const whisper = async ({ filePath, options }: Whisper) => {
   try {
     const { modelName, whisperOptions, shellOptions } = options;
     const cmd = await createCppCommand({
-      filePath: path.normalize(filePath),
+      filePath,
       modelName,
       options: whisperOptions,
     });

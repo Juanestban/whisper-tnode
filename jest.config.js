@@ -22,5 +22,6 @@ module.exports = {
     ],
   },
   detectOpenHandles: true,
+  testPathIgnorePatterns: ['./dist/'],
   testPathIgnorePatterns: ['<rootDir>/node_modules/', './lib/whisper.cpp/'],
 };

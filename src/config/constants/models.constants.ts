@@ -34,3 +34,4 @@ export const ROOT_PROJECT = `${env.isDevelopment ? '' : 'node_modules/' + WHISPE
 export const LIBRARY_PATH = `${ROOT_PROJECT}/lib`;
 export const WHISPER_CPP = `${LIBRARY_PATH}/whisper.cpp`;
 export const WHISPER_MODELS_PATH = `${WHISPER_CPP}/models`;
+export const WHISPER_CPP_MAIN_PATH = process.platform === 'win32' ? 'main.exe' : 'main';

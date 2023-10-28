@@ -1,5 +1,13 @@
 # whisper-tnode
 
+> ⚠ Warining: You will need have installed make command
+
+## Install `make` command
+
+if you be on **Windows**, go [here](https://gnuwin32.sourceforge.net/packages/make.htm) and follow steps for install and can use `make` command
+
+if you are on **Linux** or **Mac**, you can use `apt-get` / `apt` (Linux) or `brew` (Mac)
+
 ## getting started
 
 Install

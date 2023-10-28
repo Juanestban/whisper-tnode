@@ -4,9 +4,11 @@ import shelljs from 'shelljs';
 import pc from 'picocolors';
 
 import {
+  WHISPER_CPP,
   DEFAULT_MODEL,
   MODELS_LIST_FILENAMES,
   WHISPER_MODELS_PATH,
+  WHISPER_CPP_MAIN_PATH,
 } from '@whispernode/config/constants';
 import { type OnlyModel, type CppCommandProps, type FlagOption } from '@whispernode/models';
 import { println } from './print';
@@ -18,12 +20,12 @@ export const createCppCommand = async ({
 }: CppCommandProps): Promise<string> => {
   const model = await modelPathOrName(modelName);
 
-  return `./main ${getFlags(options)} -m ${model} -f ${filePath}`;
+  return `${WHISPER_CPP_MAIN_PATH} ${getFlags(options)} -m ${model} -f ${filePath}`;
 };
 
 const modelPathOrName = async (model?: OnlyModel): Promise<string> => {
   const modelPath = `models/${MODELS_LIST_FILENAMES[model ?? (DEFAULT_MODEL as OnlyModel)]}`;
-  const finalPath = path.resolve(process.cwd(), modelPath);
+  const finalPath = path.join(process.cwd(), WHISPER_CPP, modelPath);
 
   if (!fs.existsSync(finalPath)) {
     const scriptName = './download-ggml-model';
@@ -34,7 +36,7 @@ const modelPathOrName = async (model?: OnlyModel): Promise<string> => {
       pc.yellow('missing library whisper.cpp, run next command'),
     );
 
-    shelljs.cd(WHISPER_MODELS_PATH);
+    shelljs.cd(path.join(WHISPER_MODELS_PATH));
 
     if (process.platform === 'win32') {
       scriptPath = `${scriptName}.cmd`;
