@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import pc from 'picocolors';
 import shell from 'shelljs';
+import { execSync } from 'node:child_process';
 
 import { type ShellOptions } from '@whispernode/models';
 import { WHISPER_CPP, WHISPER_CPP_MAIN_PATH } from '@whispernode/config/constants';
@@ -19,7 +20,8 @@ export default async function whisperShell(
   options: ShellOptions = defaultShellOptions,
 ): Promise<string> {
   try {
-    if (!fs.existsSync(`${WHISPER_CPP_PATH}/${WHISPER_CPP_MAIN_PATH}`)) {
+    const mainFolder = path.join(WHISPER_CPP_PATH, WHISPER_CPP_MAIN_PATH);
+    if (!fs.existsSync(mainFolder)) {
       println(
         pc.bgYellow(
           pc.black(
@@ -27,13 +29,11 @@ export default async function whisperShell(
           ),
         ),
       );
-      println(
-        pc.bgYellow(
-          pc.black(
-            `[+] Try use cli for download correctly whisper.cpp repo and download the model`,
-          ),
-        ),
-      );
+      const isWindows = process.platform === 'win32';
+      const proc = isWindows ? 'prowershell.exe' : 'sh';
+
+      println(pc.bgBlue(pc.white(`[+] building makefile`)));
+      execSync(`${proc} make ${path.join(WHISPER_CPP_PATH, 'Makefile')}`);
     }
   } catch (error) {
     println(pc.bgRed(pc.black('ERROR')), pc.red('error caught in try catch block.'));
@@ -41,7 +41,7 @@ export default async function whisperShell(
 
   return new Promise((resolve, reject) => {
     shell.exec(
-      `${WHISPER_CPP_PATH}/${cmd}`,
+      path.join(WHISPER_CPP_PATH, cmd),
       options,
       (code: number, stdout: string, stderr: string) => {
         if (code === 0) {

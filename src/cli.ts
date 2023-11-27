@@ -83,7 +83,9 @@ cli
       });
 
       shelljs.cd('../');
-      shelljs.exec('make', { silent: allmute });
+      const isWindows = process.platform === 'win32';
+      const proc = isWindows ? 'prowershell.exe' : 'sh';
+      shelljs.exec(`${proc} make`, { silent: allmute });
 
       println(pc.green('Download and compile model done correctly!'));
 

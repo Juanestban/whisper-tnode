@@ -48,12 +48,12 @@ const modelPathOrName = async (model?: OnlyModel): Promise<string> => {
         (code, stdout, stderr) => {
           if (code === 0) {
             shelljs.cd(path.join(process.cwd(), WHISPER_CPP));
-            shelljs.exec('make', { silent: true, async: true }, (code, _, stderr) => {
-              if (code === 0) {
-                shelljs.cd('../');
-                resolve(stdout);
-              } else reject(stderr);
-            });
+            // here
+            const isWindows = process.platform === 'win32';
+            const proc = isWindows ? 'prowershell.exe' : 'sh';
+            shelljs.exec(`${proc} make`, { silent: true });
+            shelljs.cd('../');
+            resolve(stdout);
           } else reject(stderr);
         },
       );

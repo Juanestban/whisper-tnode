@@ -47,6 +47,10 @@
     "picocolors": "1.0.0",
     "shelljs": "0.8.5"
   },
+  "files": [
+    "dist",
+    "lib"
+  ],
   "devDependencies": {
     "@jest/globals": "29.7.0",
     "@swc-node/jest": "1.6.8",
